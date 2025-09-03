@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { formatCurrency, formatPercentage, formatDateTime } from '../../lib/utils';
 import { useCrypto } from '../../contexts/CryptoContext';
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart as RechartsPieChart, Cell, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
 export const ClientDashboard: React.FC = () => {
   const { prices } = useCrypto();

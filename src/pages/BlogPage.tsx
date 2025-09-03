@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { Card, CardContent } from '../components/ui/card';
+import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { formatDate } from '../lib/utils';
