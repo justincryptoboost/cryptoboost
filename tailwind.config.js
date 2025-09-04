@@ -7,7 +7,8 @@ export default {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     './index.html',
-  ],
+      "*.{js,ts,jsx,tsx,mdx}"
+],
   prefix: "",
   theme: {
     container: {
