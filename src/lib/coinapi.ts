@@ -10,8 +10,8 @@ export interface CoinAPIPrice {
 const cryptoSymbols = ['BTC', 'ETH', 'USDT', 'USDC'];
 
 export const fetchCryptoPrices = async (): Promise<CoinAPIPrice[]> => {
-  try {
-    const promises = cryptoSymbols.map(async (symbol) => {
+  const promises = cryptoSymbols.map(async (symbol) => {
+    try {
       const response = await fetch(
         `${COINAPI_BASE_URL}/exchangerate/${symbol}/EUR`,
         {
@@ -22,7 +22,7 @@ export const fetchCryptoPrices = async (): Promise<CoinAPIPrice[]> => {
       );
       
       if (!response.ok) {
-        throw new Error(`Failed to fetch ${symbol} price`);
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       
       const data = await response.json();
@@ -31,17 +31,22 @@ export const fetchCryptoPrices = async (): Promise<CoinAPIPrice[]> => {
         rate: data.rate,
         time: data.time,
       };
-    });
+    } catch (error) {
+      console.warn(`Failed to fetch ${symbol} price:`, error);
+      // Return fallback data for this specific symbol
+      const fallbackRates: Record<string, number> = {
+        'BTC': 45000,
+        'ETH': 3000,
+        'USDT': 0.92,
+        'USDC': 0.91,
+      };
+      return {
+        symbol_id: symbol,
+        rate: fallbackRates[symbol] || 1,
+        time: new Date().toISOString(),
+      };
+    }
+  });
 
-    return await Promise.all(promises);
-  } catch (error) {
-    console.error('Error fetching crypto prices:', error);
-    // Fallback mock data
-    return [
-      { symbol_id: 'BTC', rate: 45000, time: new Date().toISOString() },
-      { symbol_id: 'ETH', rate: 3000, time: new Date().toISOString() },
-      { symbol_id: 'USDT', rate: 0.92, time: new Date().toISOString() },
-      { symbol_id: 'USDC', rate: 0.91, time: new Date().toISOString() },
-    ];
-  }
+  return await Promise.all(promises);
 };
