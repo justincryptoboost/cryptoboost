@@ -22,12 +22,12 @@ export const CryptoTicker: React.FC = () => {
   }
 
   return (
-    <div className="bg-black/30 border-y border-primary/20 py-2 overflow-hidden">
+    <div className="bg-black/30 border-y border-primary/20 py-2 overflow-hidden hidden sm:block">
       <div className="flex animate-slide">
         {prices.concat(prices).map((price, index) => (
-          <div key={`${price.id}-${index}`} className="flex items-center space-x-2 px-8 min-w-0 flex-shrink-0">
+          <div key={`${price.id}-${index}`} className="flex items-center space-x-2 px-4 lg:px-8 min-w-0 flex-shrink-0">
             <span className="text-primary font-semibold">{price.symbol}</span>
-            <span className="text-white">{formatCurrency(price.price_eur)}</span>
+            <span className="text-white text-sm lg:text-base">{formatCurrency(price.price_eur)}</span>
             <div className={`flex items-center space-x-1 ${
               price.change_24h >= 0 ? 'text-accent' : 'text-red-400'
             }`}>
@@ -36,7 +36,7 @@ export const CryptoTicker: React.FC = () => {
               ) : (
                 <TrendingDown className="h-3 w-3" />
               )}
-              <span className="text-xs">{formatPercentage(price.change_24h)}</span>
+              <span className="text-xs lg:text-sm">{formatPercentage(price.change_24h)}</span>
             </div>
           </div>
         ))}

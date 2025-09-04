@@ -115,7 +115,7 @@ export const PlansPage: React.FC = () => {
             {investmentPacks.map((pack) => (
               <Card 
                 key={pack.id} 
-                className={`glass-effect border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 relative ${
+                className={`glass-effect border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 relative mx-4 lg:mx-0 ${
                   pack.popular ? 'ring-2 ring-secondary/50' : ''
                 }`}
               >
@@ -128,14 +128,14 @@ export const PlansPage: React.FC = () => {
                 )}
                 
                 <CardHeader className="text-center pb-4">
-                  <div className="mb-4 inline-flex p-4 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20">
+                  <div className="mb-4 inline-flex p-3 lg:p-4 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20">
                     <pack.icon className="h-10 w-10 text-primary" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-white">{pack.name}</CardTitle>
-                  <p className="text-gray-400">{pack.description}</p>
+                  <CardTitle className="text-xl lg:text-2xl font-bold text-white">{pack.name}</CardTitle>
+                  <p className="text-gray-400 text-sm lg:text-base px-2">{pack.description}</p>
                   
                   <div className="pt-4">
-                    <div className="text-4xl font-bold text-primary glow-text">
+                    <div className="text-3xl lg:text-4xl font-bold text-primary glow-text">
                       {pack.estimated_roi}%
                     </div>
                     <div className="text-sm text-gray-400">ROI estimé annuel</div>
@@ -144,32 +144,32 @@ export const PlansPage: React.FC = () => {
                 
                 <CardContent className="space-y-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Montant minimum</span>
-                    <span className="text-white font-semibold">{formatCurrency(pack.min_amount)}</span>
+                    <span className="text-gray-400 text-sm lg:text-base">Montant minimum</span>
+                    <span className="text-white font-semibold text-sm lg:text-base">{formatCurrency(pack.min_amount)}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Montant maximum</span>
-                    <span className="text-white font-semibold">{formatCurrency(pack.max_amount)}</span>
+                    <span className="text-gray-400 text-sm lg:text-base">Montant maximum</span>
+                    <span className="text-white font-semibold text-sm lg:text-base">{formatCurrency(pack.max_amount)}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Durée recommandée</span>
-                    <span className="text-white font-semibold">{pack.duration_months} mois</span>
+                    <span className="text-gray-400 text-sm lg:text-base">Durée recommandée</span>
+                    <span className="text-white font-semibold text-sm lg:text-base">{pack.duration_months} mois</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Niveau de risque</span>
+                    <span className="text-gray-400 text-sm lg:text-base">Niveau de risque</span>
                     <Badge className={getRiskBadgeColor(pack.risk_level)}>
                       {getRiskLabel(pack.risk_level)}
                     </Badge>
                   </div>
                   
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-white">Fonctionnalités incluses :</h4>
+                    <h4 className="font-semibold text-white text-sm lg:text-base">Fonctionnalités incluses :</h4>
                     <ul className="space-y-1">
                       {pack.features.map((feature, index) => (
-                        <li key={index} className="text-gray-400 text-sm flex items-center">
+                        <li key={index} className="text-gray-400 text-xs lg:text-sm flex items-center">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2"></div>
                           {feature}
                         </li>

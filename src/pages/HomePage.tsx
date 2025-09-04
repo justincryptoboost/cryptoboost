@@ -110,21 +110,21 @@ export const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-mesh-gradient opacity-30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight">
               <span className="block">Investissez</span>
               <span className="text-primary glow-text">clair,</span>
               <span className="block">performez</span>
               <span className="text-secondary glow-text">net.</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               La plateforme crypto nouvelle génération qui démocratise l'investissement 
               grâce à l'IA et des packs sur-mesure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-secondary text-black font-bold px-8 py-4 text-lg hover:scale-105 transition-transform animate-glow"
+                className="bg-gradient-to-r from-primary to-secondary text-black font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg hover:scale-105 transition-transform animate-glow"
               >
                 <Link to="/auth/register">
                   Ouvrir un compte
@@ -135,7 +135,7 @@ export const HomePage: React.FC = () => {
                 variant="outline" 
                 size="lg" 
                 asChild
-                className="border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg"
+                className="border-primary text-primary hover:bg-primary/10 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
               >
                 <Link to="/plans">Découvrir les packs</Link>
               </Button>

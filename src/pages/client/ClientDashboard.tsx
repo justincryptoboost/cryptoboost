@@ -182,47 +182,47 @@ export const ClientDashboard: React.FC = () => {
       </div>
 
       {/* Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
         <Card className="glass-effect border-primary/20">
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Solde total</p>
-                <p className="text-3xl font-bold text-white">{formatCurrency(userBalance)}</p>
+                <p className="text-2xl lg:text-3xl font-bold text-white">{formatCurrency(userBalance)}</p>
               </div>
-              <div className="p-3 rounded-full bg-primary/20">
-                <Wallet className="h-6 w-6 text-primary" />
+              <div className="p-2 lg:p-3 rounded-full bg-primary/20">
+                <Wallet className="h-5 w-5 lg:h-6 lg:w-6 text-primary" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="glass-effect border-secondary/20">
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Valeur du portefeuille</p>
-                <p className="text-3xl font-bold text-white">{formatCurrency(portfolioValue)}</p>
+                <p className="text-2xl lg:text-3xl font-bold text-white">{formatCurrency(portfolioValue)}</p>
               </div>
-              <div className="p-3 rounded-full bg-secondary/20">
-                <PieChart className="h-6 w-6 text-secondary" />
+              <div className="p-2 lg:p-3 rounded-full bg-secondary/20">
+                <PieChart className="h-5 w-5 lg:h-6 lg:w-6 text-secondary" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="glass-effect border-accent/20">
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">ROI global</p>
                 <div className="flex items-center space-x-2">
-                  <p className="text-3xl font-bold text-accent">{formatPercentage(totalROI)}</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-accent">{formatPercentage(totalROI)}</p>
                   <TrendingUp className="h-5 w-5 text-accent" />
                 </div>
               </div>
-              <div className="p-3 rounded-full bg-accent/20">
-                <TrendingUp className="h-6 w-6 text-accent" />
+              <div className="p-2 lg:p-3 rounded-full bg-accent/20">
+                <TrendingUp className="h-5 w-5 lg:h-6 lg:w-6 text-accent" />
               </div>
             </div>
           </CardContent>
@@ -253,7 +253,7 @@ export const ClientDashboard: React.FC = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="h-64">
+          <div className="h-48 lg:h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={performanceData[selectedPeriod]}>
                 <XAxis 
@@ -295,22 +295,22 @@ export const ClientDashboard: React.FC = () => {
         {/* Quick Actions */}
         <Card className="glass-effect border-primary/20">
           <CardHeader>
-            <CardTitle className="text-xl font-bold text-white">Actions rapides</CardTitle>
+            <CardTitle className="text-lg lg:text-xl font-bold text-white">Actions rapides</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 lg:space-y-4">
             {quickActions.map((action, index) => (
               <Button
                 key={index}
                 variant="ghost"
                 onClick={action.action}
-                className="w-full justify-start h-auto p-4 hover:bg-primary/10 border border-primary/20 hover:border-primary/40 transition-all"
+                className="w-full justify-start h-auto p-3 lg:p-4 hover:bg-primary/10 border border-primary/20 hover:border-primary/40 transition-all"
               >
-                <div className={`p-2 rounded-lg bg-gradient-to-r ${action.color} mr-4`}>
+                <div className={`p-2 rounded-lg bg-gradient-to-r ${action.color} mr-3 lg:mr-4`}>
                   <action.icon className="h-5 w-5 text-black" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-white">{action.title}</div>
-                  <div className="text-sm text-gray-400">{action.description}</div>
+                  <div className="font-semibold text-white text-sm lg:text-base">{action.title}</div>
+                  <div className="text-xs lg:text-sm text-gray-400">{action.description}</div>
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-primary ml-auto" />
               </Button>
@@ -321,22 +321,22 @@ export const ClientDashboard: React.FC = () => {
         {/* Portfolio Distribution */}
         <Card className="glass-effect border-primary/20">
           <CardHeader>
-            <CardTitle className="text-xl font-bold text-white">Répartition du portefeuille</CardTitle>
+            <CardTitle className="text-lg lg:text-xl font-bold text-white">Répartition du portefeuille</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
               {portfolioData.map((item, index) => (
-                <div key={index} className="flex items-center justify-between">
+                <div key={index} className="flex items-center justify-between py-1">
                   <div className="flex items-center space-x-3">
                     <div 
                       className="w-3 h-3 rounded-full" 
                       style={{ backgroundColor: item.color }}
                     ></div>
-                    <span className="text-white font-medium">{item.name}</span>
+                    <span className="text-white font-medium text-sm lg:text-base">{item.name}</span>
                   </div>
                   <div className="text-right">
-                    <div className="text-white font-semibold">{formatCurrency(item.amount)}</div>
-                    <div className="text-gray-400 text-sm">{item.value}%</div>
+                    <div className="text-white font-semibold text-sm lg:text-base">{formatCurrency(item.amount)}</div>
+                    <div className="text-gray-400 text-xs lg:text-sm">{item.value}%</div>
                   </div>
                 </div>
               ))}
@@ -350,25 +350,25 @@ export const ClientDashboard: React.FC = () => {
         <Card className="glass-effect border-primary/20">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-xl font-bold text-white">Dernières transactions</CardTitle>
+              <CardTitle className="text-lg lg:text-xl font-bold text-white">Dernières transactions</CardTitle>
               <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">
                 Voir tout
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 lg:space-y-4">
             {recentTransactions.map((transaction) => {
               const Icon = getTransactionIcon(transaction.type);
               const color = getTransactionColor(transaction.type);
               
               return (
-                <div key={transaction.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-primary/5 transition-colors">
+                <div key={transaction.id} className="flex items-center space-x-3 lg:space-x-4 p-2 lg:p-3 rounded-lg hover:bg-primary/5 transition-colors">
                   <div className={`p-2 rounded-lg bg-gradient-to-r from-black/20 to-black/40 ${color}`}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium truncate">{transaction.description}</p>
-                    <p className="text-gray-400 text-sm">{formatDateTime(transaction.date)}</p>
+                    <p className="text-white font-medium truncate text-sm lg:text-base">{transaction.description}</p>
+                    <p className="text-gray-400 text-xs lg:text-sm">{formatDateTime(transaction.date)}</p>
                   </div>
                   <div className="text-right">
                     <p className={`font-semibold ${
@@ -377,7 +377,7 @@ export const ClientDashboard: React.FC = () => {
                       {transaction.type === 'withdrawal' ? '-' : '+'}{formatCurrency(transaction.amount)}
                     </p>
                     <Badge 
-                      className={`text-xs ${
+                      className={`text-xs lg:text-xs ${
                         transaction.status === 'completed' 
                           ? 'bg-accent/20 text-accent border-accent/30' 
                           : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
@@ -396,7 +396,7 @@ export const ClientDashboard: React.FC = () => {
         <Card className="glass-effect border-primary/20">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-xl font-bold text-white flex items-center">
+              <CardTitle className="text-lg lg:text-xl font-bold text-white flex items-center">
                 <Bell className="h-5 w-5 mr-2" />
                 Notifications
               </CardTitle>
@@ -405,14 +405,14 @@ export const ClientDashboard: React.FC = () => {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 lg:space-y-4">
             {notifications.map((notification) => (
-              <div key={notification.id} className="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
+              <div key={notification.id} className="p-3 lg:p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h3 className="text-white font-medium mb-1">{notification.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{notification.message}</p>
-                    <p className="text-gray-500 text-xs mt-2">{formatDateTime(notification.date)}</p>
+                    <h3 className="text-white font-medium mb-1 text-sm lg:text-base">{notification.title}</h3>
+                    <p className="text-gray-400 text-xs lg:text-sm leading-relaxed">{notification.message}</p>
+                    <p className="text-gray-500 text-xs mt-1 lg:mt-2">{formatDateTime(notification.date)}</p>
                   </div>
                   <div className={`w-2 h-2 rounded-full mt-2 ${
                     notification.type === 'success' ? 'bg-accent' : 'bg-primary'
@@ -427,14 +427,14 @@ export const ClientDashboard: React.FC = () => {
       {/* Live Crypto Prices */}
       <Card className="glass-effect border-primary/20">
         <CardHeader>
-          <CardTitle className="text-xl font-bold text-white">Prix en temps réel</CardTitle>
+          <CardTitle className="text-lg lg:text-xl font-bold text-white">Prix en temps réel</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
             {prices.map((price) => (
-              <div key={price.id} className="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
+              <div key={price.id} className="p-3 lg:p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-white">{price.symbol}</span>
+                  <span className="font-semibold text-white text-sm lg:text-base">{price.symbol}</span>
                   <div className={`flex items-center space-x-1 ${
                     price.change_24h >= 0 ? 'text-accent' : 'text-red-400'
                   }`}>
@@ -446,10 +446,10 @@ export const ClientDashboard: React.FC = () => {
                     <span className="text-sm">{formatPercentage(price.change_24h)}</span>
                   </div>
                 </div>
-                <div className="text-lg font-bold text-primary">
+                <div className="text-base lg:text-lg font-bold text-primary">
                   {formatCurrency(price.price_eur)}
                 </div>
-                <div className="text-xs text-gray-400">{price.name}</div>
+                <div className="text-xs text-gray-400 truncate">{price.name}</div>
               </div>
             ))}
           </div>
