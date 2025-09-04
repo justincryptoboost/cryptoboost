@@ -113,7 +113,7 @@ export const ContactPage: React.FC = () => {
                           id="name"
                           value={formData.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
-                          className="bg-black/50 border-primary/30 text-white"
+                          className="bg-black/50 border-primary/30 text-white text-base"
                           placeholder="Votre nom"
                           required
                         />
@@ -126,7 +126,7 @@ export const ContactPage: React.FC = () => {
                           type="email"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="bg-black/50 border-primary/30 text-white"
+                          className="bg-black/50 border-primary/30 text-white text-base"
                           placeholder="votre@email.com"
                           required
                         />
@@ -155,7 +155,7 @@ export const ContactPage: React.FC = () => {
                         id="subject"
                         value={formData.subject}
                         onChange={(e) => handleInputChange('subject', e.target.value)}
-                        className="bg-black/50 border-primary/30 text-white"
+                        className="bg-black/50 border-primary/30 text-white text-base"
                         placeholder="Objet de votre message"
                         required
                       />
@@ -167,7 +167,7 @@ export const ContactPage: React.FC = () => {
                         id="message"
                         value={formData.message}
                         onChange={(e) => handleInputChange('message', e.target.value)}
-                        className="bg-black/50 border-primary/30 text-white min-h-[120px]"
+                        className="bg-black/50 border-primary/30 text-white min-h-[120px] text-base"
                         placeholder="Décrivez votre demande en détail..."
                         required
                       />
